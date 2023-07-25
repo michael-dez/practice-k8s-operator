@@ -1,0 +1,27 @@
+# permissions for end users to view foundries.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: clusterrole
+    app.kubernetes.io/instance: foundry-viewer-role
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/created-by: practice-k8s-operator
+    app.kubernetes.io/part-of: practice-k8s-operator
+    app.kubernetes.io/managed-by: kustomize
+  name: foundry-viewer-role
+rules:
+- apiGroups:
+  - apps.ropetrick.dev
+  resources:
+  - foundries
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apps.ropetrick.dev
+  resources:
+  - foundries/status
+  verbs:
+  - get
